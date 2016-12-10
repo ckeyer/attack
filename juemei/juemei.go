@@ -20,3 +20,11 @@ type ResolveResult struct {
 	Links    []string
 	OutLinks []string
 }
+
+type StoreResult struct {
+	URLs                  []string
+	Imgs, Links, OutLinks int64
+}
+
+type Store interface {
+}
