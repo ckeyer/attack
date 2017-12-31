@@ -26,10 +26,7 @@ func TestAccount(t *testing.T) {
 	}
 	t.Logf("account: %+v", cli)
 
-	img := &Img{
-		URL: "http://s.cn.bing.net/az/hprichbg/rb/CliffPalaceLuminara_ZH-CN10279459718_1920x1080.jpg",
-	}
-	img.FmtName()
+	img := NewImg("http://s.cn.bing.net/az/hprichbg/rb/CliffPalaceLuminara_ZH-CN10279459718_1920x1080.jpg")
 
 	err = cli.Upload(img)
 	if err != nil {

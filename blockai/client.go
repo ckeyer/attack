@@ -24,6 +24,12 @@ type Img struct {
 	IsPrivate bool   `json:"is_private"`
 }
 
+func NewImg(url string) *Img {
+	i := &Img{URL: url}
+	i.FmtName()
+	return i
+}
+
 type Client struct {
 	Name     string `json:"name"`
 	Email    string `json:"email"`

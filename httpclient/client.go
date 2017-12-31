@@ -11,6 +11,7 @@ func (c CookieMap) GetValue(key string) string {
 	if v, ok := c[key]; ok {
 		return v.Value
 	}
+
 	return ""
 }
 
