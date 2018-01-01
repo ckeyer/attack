@@ -1,0 +1,16 @@
+sudo: required
+
+language: go
+
+go:
+  - master
+
+services:
+
+before_install:
+  - make init
+
+script:
+  - make test
+
+after_success:

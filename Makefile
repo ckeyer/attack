@@ -22,6 +22,8 @@ LD_FLAGS := -X $(CMS_PKG)/version.version=$(VERSION) \
 
 init:
 	echo $(IMAGE_NAME)
+	which govendor || go get github.com/kardianos/govendor
+	govendor sync
 
 local: generate
 	$(GO) install -a -ldflags="$(LD_FLAGS)" .
