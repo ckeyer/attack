@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package ckeyer.com.attack.protos;
+
+import "google/api/annotations.proto";
+
+option go_package = "protos";
+
+service HTTPAttacker {
+  rpc StartHTTP (HTTPOption) returns (HTTPJob) {}
+  rpc StopHTTP (HTTPJob) returns (HTTPJob) {}
+}
+
+message HTTPOption {
+	string url = 1;
+	// GET, POST, PUT, DELETE, PATCH ..., default GET
+	string method = 2;
+	// custom headers
+	map<string, string> headers = 3;
+	// random user-agent
+	bool randUA = 4;
+	bool useProxy = 5;
+	int64 goroutine = 6;
+	int64 clientCount = 7;
+}
+
+message HTTPJob {
+	string uuid = 1;
+	HTTPOption option = 2;
+}
