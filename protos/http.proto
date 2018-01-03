@@ -21,7 +21,8 @@ message HTTPOption {
 	bool randUA = 4;
 	bool useProxy = 5;
 	int64 goroutine = 6;
-	int64 clientCount = 7;
+	// every httpclient send reqeusts.
+	int64 count = 7;
 }
 
 message HTTPJob {

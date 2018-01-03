@@ -1,5 +1,5 @@
 PWD := $(shell pwd)
-APP := attach
+APP := attack
 PKG := github.com/ckeyer/$(APP)
 CMS_PKG := github.com/ckeyer/commons
 GO := CGO_ENABLED=0 GOBIN=${PWD}/bundles go
@@ -56,6 +56,17 @@ push:
 
 test:
 	${GO} test -ldflags="$(LD_FLAGS)" $$(go list ./... |grep -v "vendor")
+
+release: clean local
+	mkdir -p bundles/$(PACKAGE_NAME)
+	mv bundles/$(APP) bundles/$(PACKAGE_NAME)
+	cd bundles ;\
+	 echo $(VERSION) > $(PACKAGE_NAME)/release.txt ;\
+	 $(HASH) $(PACKAGE_NAME)/$(APP) > $(PACKAGE_NAME)/sha1.txt ;\
+	 tar zcvf $(PACKAGE_NAME).tar.gz $(PACKAGE_NAME);
+
+clean:
+	rm -rf bundles/*
 
 dev: dev-server
 
