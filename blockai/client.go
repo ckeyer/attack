@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strings"
 
-	log "github.com/Sirupsen/logrus"
-	"github.com/ckeyer/attack/httpclient"
+	"github.com/ckeyer/commons/httpcli"
+	log "github.com/ckeyer/logrus"
 )
 
 const (
@@ -36,7 +36,7 @@ type Client struct {
 	Password string `json:"password"`
 	token    string
 
-	cli *httpclient.Client
+	cli *httpcli.Client
 }
 
 func NewClient(name, email, passwd string) (*Client, error) {
@@ -44,7 +44,7 @@ func NewClient(name, email, passwd string) (*Client, error) {
 		Name:     name,
 		Email:    email,
 		Password: passwd,
-		cli:      httpclient.NewClient(),
+		cli:      httpcli.NewClient(),
 	}
 	if err := cli.signupAndlogin(); err != nil {
 		return nil, err

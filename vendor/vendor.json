@@ -9,6 +9,18 @@
 			"revisionTime": "2017-10-04T14:25:31Z"
 		},
 		{
+			"checksumSHA1": "OfHbisNes0gI+S16gYBreh7Riv8=",
+			"path": "github.com/PuerkitoBio/goquery",
+			"revision": "152b1a2c8f5d0340f658bb656032a39b94e52958",
+			"revisionTime": "2016-08-31T16:22:11Z"
+		},
+		{
+			"checksumSHA1": "2rWSos1D+xqNSGkvEMOG3pntod8=",
+			"path": "github.com/andybalholm/cascadia",
+			"revision": "349dd0209470eabd9514242c688c403c0926d266",
+			"revisionTime": "2016-12-24T14:14:13Z"
+		},
+		{
 			"checksumSHA1": "QY4v2enlWwUjQGFcrH8zMfprsHE=",
 			"path": "github.com/ckeyer/commons/crypto",
 			"revision": "8630e716ee8f493be1092d8601f68dfbd917b80b",
@@ -299,6 +311,12 @@
 			"path": "google.golang.org/grpc/transport",
 			"revision": "de0cff50aabf5cdbe9b03732ffc4a29c25e368d9",
 			"revisionTime": "2017-10-19T22:16:16Z"
+		},
+		{
+			"checksumSHA1": "vCAunFDVPx4MqgjbYbUzxXbqiEE=",
+			"path": "gopkg.in/redis.v4",
+			"revision": "bb84d84aeaa98b3c5c887264031b294cc7ca860c",
+			"revisionTime": "2016-09-27T09:38:15Z"
 		}
 	],
 	"rootPath": "github.com/ckeyer/attack"

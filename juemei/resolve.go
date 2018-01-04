@@ -6,10 +6,10 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	log "github.com/Sirupsen/logrus"
-	"github.com/ckeyer/attack/httpclient"
+	"github.com/ckeyer/commons/httpcli"
 )
 
-func LoadDoc(cli *httpclient.Client, Url string) (*goquery.Document, error) {
+func LoadDoc(cli *httpcli.Client, Url string) (*goquery.Document, error) {
 	resp, err := cli.Get(Url)
 	if err != nil {
 		log.Errorf("GET failed, %s %v", Url, err)
@@ -26,7 +26,7 @@ func LoadDoc(cli *httpclient.Client, Url string) (*goquery.Document, error) {
 	return doc, nil
 }
 
-func Resolve(cli *httpclient.Client, doc *goquery.Document) (*ResolveResult, error) {
+func Resolve(cli *httpcli.Client, doc *goquery.Document) (*ResolveResult, error) {
 	imgUrls := []string{}
 	doc.Find("img").Each(func(i int, s *goquery.Selection) {
 		imgUrl := s.AttrOr("src", "")
