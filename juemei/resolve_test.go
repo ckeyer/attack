@@ -3,7 +3,7 @@ package juemei
 import (
 	"testing"
 
-	"github.com/ckeyer/ckeyer/httpcli"
+	"github.com/ckeyer/commons/httpcli"
 	"gopkg.in/redis.v4"
 )
 
