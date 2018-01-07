@@ -3,14 +3,14 @@ package juemei
 import (
 	"testing"
 
-	"github.com/ckeyer/attack/httpclient"
+	"github.com/ckeyer/ckeyer/httpcli"
 	"gopkg.in/redis.v4"
 )
 
 func TestGetPage(t *testing.T) {
 	return
 	url := "http://www.juemei.com/mm/201612/6386.html"
-	cli := httpclient.NewClient()
+	cli := httpcli.NewClient()
 	doc, err := LoadDoc(cli, url)
 	if err != nil {
 		t.Fatal(err)
@@ -29,7 +29,7 @@ func TestGetPage(t *testing.T) {
 func TestRedisStore(t *testing.T) {
 	return
 	url := "http://www.juemei.com/mm"
-	cli := httpclient.NewClient()
+	cli := httpcli.NewClient()
 	rcli := redis.NewClient(&redis.Options{
 		Addr: "u5.mj:6379",
 	})
