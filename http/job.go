@@ -3,16 +3,14 @@ package http
 import (
 	"net/http"
 
-	"github.com/ckeyer/logrus"
-
+	"github.com/ckeyer/api/types"
 	"github.com/ckeyer/commons/httpcli"
-
-	"github.com/ckeyer/attack/protos"
 	"github.com/ckeyer/commons/httpcli/useragent"
+	"github.com/ckeyer/logrus"
 )
 
 type Job struct {
-	protos.HTTPOption
+	types.HTTPOption
 
 	index int
 	// run times
@@ -22,7 +20,7 @@ type Job struct {
 	cli             *httpcli.Client
 }
 
-func NewJob(index int, opt protos.HTTPOption, ch <-chan struct{}) *Job {
+func NewJob(index int, opt types.HTTPOption, ch <-chan struct{}) *Job {
 	j := &Job{
 		HTTPOption: opt,
 		stopC:      ch,

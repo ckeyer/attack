@@ -27,6 +27,12 @@
 			"revisionTime": "2016-12-24T14:14:13Z"
 		},
 		{
+			"checksumSHA1": "nmpX4+f1mMhNzFxgJcTqeEhmyro=",
+			"path": "github.com/ckeyer/api/types",
+			"revision": "c29e3f8c0f3c318c6401df3729fc06425c7f6b42",
+			"revisionTime": "2018-02-13T06:43:21Z"
+		},
+		{
 			"checksumSHA1": "QY4v2enlWwUjQGFcrH8zMfprsHE=",
 			"path": "github.com/ckeyer/commons/crypto",
 			"revision": "8630e716ee8f493be1092d8601f68dfbd917b80b",
@@ -235,6 +241,12 @@
 			"revisionTime": "2017-10-19T22:16:16Z"
 		},
 		{
+			"checksumSHA1": "CPWX/IgaQSR3+78j4sPrvHNkW+U=",
+			"path": "google.golang.org/grpc/balancer/base",
+			"revision": "424e3e9894f9206fca433fb4ba66f639be56e325",
+			"revisionTime": "2018-02-02T18:35:15Z"
+		},
+		{
 			"checksumSHA1": "os98urLvZVriKRbHhIsipJfcT7Q=",
 			"path": "google.golang.org/grpc/balancer/roundrobin",
 			"revision": "de0cff50aabf5cdbe9b03732ffc4a29c25e368d9",
@@ -257,6 +269,18 @@
 			"path": "google.golang.org/grpc/credentials",
 			"revision": "de0cff50aabf5cdbe9b03732ffc4a29c25e368d9",
 			"revisionTime": "2017-10-19T22:16:16Z"
+		},
+		{
+			"checksumSHA1": "mJTBJC0n9J2CV+tHX+dJosYOZmg=",
+			"path": "google.golang.org/grpc/encoding",
+			"revision": "424e3e9894f9206fca433fb4ba66f639be56e325",
+			"revisionTime": "2018-02-02T18:35:15Z"
+		},
+		{
+			"checksumSHA1": "LKKkn7EYA+Do9Qwb2/SUKLFNxoo=",
+			"path": "google.golang.org/grpc/encoding/proto",
+			"revision": "424e3e9894f9206fca433fb4ba66f639be56e325",
+			"revisionTime": "2018-02-02T18:35:15Z"
 		},
 		{
 			"checksumSHA1": "WxP3QV0Y4fIx5NsT0dwBp6JsrJE=",
@@ -311,6 +335,12 @@
 			"path": "google.golang.org/grpc/resolver/dns",
 			"revision": "de0cff50aabf5cdbe9b03732ffc4a29c25e368d9",
 			"revisionTime": "2017-10-19T22:16:16Z"
+		},
+		{
+			"checksumSHA1": "zs9M4xE8Lyg4wvuYvR00XoBxmuw=",
+			"path": "google.golang.org/grpc/resolver/passthrough",
+			"revision": "424e3e9894f9206fca433fb4ba66f639be56e325",
+			"revisionTime": "2018-02-02T18:35:15Z"
 		},
 		{
 			"checksumSHA1": "G9lgXNi7qClo5sM2s6TbTHLFR3g=",

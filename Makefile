@@ -23,13 +23,11 @@ LD_FLAGS := -X $(CMS_PKG)/version.version=$(VERSION) \
 init:
 	echo $(IMAGE_NAME)
 	which govendor || go get github.com/kardianos/govendor
+	which wang || go get github.com/ckeyer/wang
 	govendor sync
 
-local: generate
+local:
 	$(GO) install -a -ldflags="$(LD_FLAGS)" .
-
-generate:
-	$(GO) generate ./protos
 
 build:
 	docker run --rm \

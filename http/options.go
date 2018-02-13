@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/ckeyer/attack/protos"
+	"github.com/ckeyer/api/types"
 )
 
-// CheckOption check protos.HTTPOption.
-func CheckOption(opt protos.HTTPOption) error {
+// CheckOption check types.HTTPOption.
+func CheckOption(opt types.HTTPOption) error {
 	_, err := url.Parse(opt.Url)
 	if err != nil {
 		return err
@@ -25,7 +25,7 @@ func CheckOption(opt protos.HTTPOption) error {
 }
 
 // GetOptionHeader get header from option
-func GetOptionHeader(opt protos.HTTPOption) http.Header {
+func GetOptionHeader(opt types.HTTPOption) http.Header {
 	hdr := http.Header{}
 	for k, v := range opt.Headers {
 		hdr.Add(k, v)

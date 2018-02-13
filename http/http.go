@@ -5,12 +5,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ckeyer/attack/protos"
+	"github.com/ckeyer/api/types"
 	"github.com/ckeyer/logrus"
 )
 
 type Manager struct {
-	protos.HTTPOption
+	types.HTTPOption
 	sync.Mutex
 
 	jobs  map[int]*Job
@@ -18,7 +18,7 @@ type Manager struct {
 }
 
 // NewManager new a http attack manager
-func NewManager(opt protos.HTTPOption) *Manager {
+func NewManager(opt types.HTTPOption) *Manager {
 	mgr := &Manager{
 		HTTPOption: opt,
 		jobs:       map[int]*Job{},
@@ -29,7 +29,7 @@ func NewManager(opt protos.HTTPOption) *Manager {
 }
 
 // Execute do http attack
-func Execute(opt protos.HTTPOption) error {
+func Execute(opt types.HTTPOption) error {
 	if err := CheckOption(opt); err != nil {
 		logrus.Fatalln(err)
 	}
@@ -67,7 +67,7 @@ func (mgr *Manager) setupEnv() {
 }
 
 // runAJob start a new job
-func (mgr *Manager) runAJob(index int, opt protos.HTTPOption) {
+func (mgr *Manager) runAJob(index int, opt types.HTTPOption) {
 	j := NewJob(index, opt, mgr.stopC)
 
 	mgr.Lock()

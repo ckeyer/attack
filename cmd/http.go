@@ -3,8 +3,8 @@ package cmd
 import (
 	"strings"
 
+	"github.com/ckeyer/api/types"
 	"github.com/ckeyer/attack/http"
-	"github.com/ckeyer/attack/protos"
 	"github.com/ckeyer/logrus"
 	"github.com/spf13/cobra"
 )
@@ -16,7 +16,7 @@ func init() {
 func httpCmd() *cobra.Command {
 	var (
 		headers []string
-		opt     = protos.HTTPOption{
+		opt     = types.HTTPOption{
 			Headers: map[string]string{},
 		}
 	)

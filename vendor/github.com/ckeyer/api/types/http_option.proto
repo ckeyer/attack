@@ -1,10 +1,8 @@
 syntax = "proto3";
 
-package ckeyer.com.attack.protos;
+package ckeyer.attack.types;
 
-import "google/api/annotations.proto";
-
-option go_package = "protos";
+option go_package = "types";
 
 service HTTPAttacker {
   rpc StartHTTP (HTTPOption) returns (HTTPJob) {}
