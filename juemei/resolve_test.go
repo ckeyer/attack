@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/ckeyer/commons/httpcli"
-	"gopkg.in/redis.v4"
+	redis "gopkg.in/redis.v4"
 )
 
 func TestGetPage(t *testing.T) {

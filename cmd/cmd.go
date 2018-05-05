@@ -11,10 +11,6 @@ var (
 	rootCmd = &cobra.Command{
 		Use:   "attack",
 		Short: "",
-		Annotations: map[string]string{
-			"a": "aae",
-			"b": "bb",
-		},
 		PersistentPreRun: func(cmd *cobra.Command, args []string) {
 			if debug {
 				logrus.SetLevel(logrus.DebugLevel)

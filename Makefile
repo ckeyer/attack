@@ -1,12 +1,9 @@
 PWD := $(shell pwd)
 APP := attack
 PKG := github.com/ckeyer/$(APP)
-CMS_PKG := github.com/ckeyer/commons
-GO := CGO_ENABLED=0 GOBIN=${PWD}/bundles go
+CMS_PKG := ${PKG}/vendor/github.com/ckeyer/commons
+GO := CGO_ENABLED=0 go
 HASH := $(shell which sha1sum || which shasum)
-
-DEV_IMAGE := ckeyer/dev:go
-IMAGE_NAME := ckeyer/$(APP):$(GIT_BRANCH)
 
 OS := $(shell go env GOOS)
 ARCH := $(shell go env GOARCH)
@@ -20,33 +17,16 @@ LD_FLAGS := -X $(CMS_PKG)/version.version=$(VERSION) \
  -X $(CMS_PKG)/version.gitCommit=$(GIT_COMMIT) \
  -X $(CMS_PKG)/version.buildAt=$(BUILD_AT) -w
 
-init:
-	echo $(IMAGE_NAME)
-	which govendor || go get github.com/kardianos/govendor
-	which wang || go get github.com/ckeyer/wang
-	govendor sync
-
-local:
-	$(GO) install -a -ldflags="$(LD_FLAGS)" .
+BUILD_IMAGE := ckeyer/dev:go
+IMAGE_NAME := ckeyer/$(APP):$(VERSION)
 
 build:
-	docker run --rm \
-	 --name $(APP)-building \
-	 -e CGO_ENABLED=0 \
-	 -v $(PWD):/opt/gopath/src/$(PKG) \
-	 -w /opt/gopath/src/$(PKG) \
-	 $(DEV_IMAGE) make local
+	$(GO) build -v -ldflags="$(LD_FLAGS)" -o bundles/${APP} .
 
 run:
-	docker run --rm \
-	 --name $(APP)-dev-running \
-	 -e CGO_ENABLED=0 \
-	 -p 8089:8080 \
-	 -v $(PWD):/opt/gopath/src/$(PKG) \
-	 -w /opt/gopath/src/$(PKG) \
-	 $(DEV_IMAGE) ${GO} run ./main.go
+	 ${GO} run ./main.go
 
-image: build
+image:
 	docker build -t $(IMAGE_NAME) .
 
 push:
@@ -55,7 +35,7 @@ push:
 test:
 	${GO} test -ldflags="$(LD_FLAGS)" $$(go list ./... |grep -v "vendor")
 
-release: clean local
+release: clean build
 	mkdir -p bundles/$(PACKAGE_NAME)
 	mv bundles/$(APP) bundles/$(PACKAGE_NAME)
 	cd bundles ;\
@@ -66,20 +46,18 @@ release: clean local
 clean:
 	rm -rf bundles/*
 
-dev: dev-server
-
 dev-server:
 	docker run --rm -it \
 	 --name $(APP)-dev \
 	 -p 8089:8080 \
-	 -v $(PWD):/opt/gopath/src/$(PKG) \
-	 -w /opt/gopath/src/$(PKG) \
-	 $(DEV_IMAGE) bash
+	 -v $(PWD):/go/src/$(PKG) \
+	 -w /go/src/$(PKG) \
+	 $(BUILD_IMAGE) bash
 
 dev-client:
 	docker run --rm -it \
 	 --name $(APP)-dev-client \
 	 -v /var/run/docker.sock:/var/run/docker.sock \
-	 -v $(PWD):/opt/gopath/src/$(PKG) \
-	 -w /opt/gopath/src/$(PKG) \
-	 $(DEV_IMAGE) bash
+	 -v $(PWD):/go/src/$(PKG) \
+	 -w /go/src/$(PKG) \
+	 $(BUILD_IMAGE) bash
